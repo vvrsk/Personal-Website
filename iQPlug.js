@@ -23,7 +23,7 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
 			server.getPrimaryService('SATECHIPLUG')
 			.then(service => {   
             /* return Promise.all([
-             this._cacheCharacteristic(service, 'gattWriteCharacteristicValue'), //replace - Charecteristic ID of the plug control
+             this._cacheCharacteristic(service, 'replace'), //replace - Charecteristic ID of the plug control
             ]) */
 			console.log('Here');
 			var data = PLUG_ATTRIBUTE_HANDLE;
@@ -39,7 +39,7 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
   
 	}
 
- // Find the appropriate function for passing the start/ stop command
+ // Dummy Code stubs for future--- Change based on requirements  --> Inspired by Heart Rate Monitor Example
    startButtonAction() {
       return this._startNotifications('SATECHIPLUG');
     }
@@ -47,7 +47,6 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
       return this._stopNotifications('SATECHIPLUG');
     }
 	
-  
       /* Utils */
 
     _cacheCharacteristic(service, characteristicUuid) {
@@ -58,20 +57,16 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
     }
     _startNotifications(characteristicUuid) {
       let characteristic = this._characteristics.get(characteristicUuid);
-      // Returns characteristic to set up characteristicvaluechanged event
-      // handlers in the resolved promise.
-      return characteristic.startNotifications()
+	  return characteristic.startNotifications()
       .then(() => characteristic);
     }
     _stopNotifications(characteristicUuid) {
       let characteristic = this._characteristics.get(characteristicUuid);
-      // Returns characteristic to remove characteristicvaluechanged event
-      // handlers in the resolved promise.
       return characteristic.stopNotifications()
       .then(() => characteristic);
     }
   }
-	console.log("Hello");
+  console.log("Test - 1");
   window.iQPlug = new IQPlug();
-  console.log("Hello - Hi");
+  console.log("Test - 2");
   } )();
