@@ -1,0 +1,7 @@
+function switchON(){
+    
+}
+
+function switchOFF(){
+    
+}

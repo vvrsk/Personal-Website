@@ -1,0 +1,60 @@
+body, html {
+    max-height: 100%;
+}
+
+body {
+    background: #E5E5E5;
+}
+
+/*user defined custom css
+*/
+.box{
+    border: 1px solid #0fc18c;
+    max-height: 100%;
+    max-width: 1000px;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    color: #0fc18c !important;
+    padding: 2em;
+    margin-top: 30%;
+}
+
+.text{
+    text-align: center;
+}
+
+
+
+
+.add-on{
+    margin: 5em 0em 3em 0em;
+}
+
+
+.search-icon{
+    padding: 0.63em;
+}
+
+
+.switch-btn{
+    background-color: #0fc18c;
+    color: #FFFFFF;
+
+
+}
+.switch-btn:hover{
+    background-color: #FFFFFF;
+    color: #0fc18c;
+    border: 1px solid #0fc18c;
+}
+.switch-btn:active{
+
+    background-color: #0fc18c;
+    color: #FFFFFF;
+
+}
+
+.no-padding{
+    padding: 0px !important;
+
+}
