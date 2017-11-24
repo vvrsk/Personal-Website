@@ -47,7 +47,7 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
 
         startButtonAction() {
             alert("Inside StartButton");
-            return this._startNotifications('IQ_Plug');
+            //return this._startNotifications('IQ_Plug');
         }
         stopButtonAction() {
             alert("Inside StopButton");
