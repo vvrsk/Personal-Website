@@ -12,12 +12,12 @@ function switchON(){
                 .then(server => {
                 this.server = server;
                 return Promise.all([
-                    server.getPrimaryService('00001800-0000-1000-8000-00805f9b34fb')
-                    .then(service => {   
-                        /* return Promise.all([
-             this._cacheCharacteristic(service, 'gattWriteCharacteristicValue'), //replace - Charecteristic ID of the plug control
-            ]) */
-                        console.log('Here');
+                    server.getPrimaryService('00001800-0000-1000-8000-00805f9b34fb') //Replace the service value
+                .then(service => {   
+                    return service.getCharacteristic('00002a02-0000-1000-8000-00805f9b34fb'); // replace charecteristic
+						 })
+				.then(function(characteristic) {
+						console.log('Here');
                         var data = 0x002b;
                         console.log('Here');
                         return characteristic.writeValue(data);
@@ -30,7 +30,6 @@ function switchON(){
             })
 
 }
-
 function switchOFF(){
      alert("Inside Off");
 }
