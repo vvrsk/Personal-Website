@@ -83,7 +83,7 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
 
     window.addEventListener("load", function() {
         document.getElementById('onButton').addEventListener('click', function() {
-            iQPlug.startButtonAction();
+            //iQPlug.startButtonAction();
 			iQPlug.connect();
         });
         document.getElementById('offButton').addEventListener('click', function() {
