@@ -1,6 +1,8 @@
 function switchON(){
     alert("Inside Connect");
-            return navigator.bluetooth.requestDevice({filters:[{services:['SATECHIPLUG']}]})
+	let options = {};
+	options.acceptAllDevices = true;
+            return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => {
                 console.log(device.name);
                 console.log('Here-esrvice');
