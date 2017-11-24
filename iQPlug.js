@@ -12,6 +12,8 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
         }
 
         connect() {
+			
+			alert("Inside Connect");
             return navigator.bluetooth.requestDevice({filters:[{services:['IQ_Plug']}]})
                 .then(device => {
                 console.log(device.name);
@@ -82,6 +84,7 @@ var PLUG_ATTRIBUTE_HANDLE = 0x2B;
     window.addEventListener("load", function() {
         document.getElementById('onButton').addEventListener('click', function() {
             iQPlug.startButtonAction();
+			iQPlug.connect();
         });
         document.getElementById('offButton').addEventListener('click', function() {
             iQPlug.stopButtonAction();
