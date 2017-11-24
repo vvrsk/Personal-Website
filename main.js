@@ -12,13 +12,13 @@ function switchON(){
                 .then(server => {
                 this.server = server;
                 return Promise.all([
-                    server.getPrimaryService('SATECHIPLUG')
+                    server.getPrimaryService('00001800-0000-1000-8000-00805f9b34fb')
                     .then(service => {   
                         /* return Promise.all([
              this._cacheCharacteristic(service, 'gattWriteCharacteristicValue'), //replace - Charecteristic ID of the plug control
             ]) */
                         console.log('Here');
-                        var data = 0x2B;
+                        var data = 0x002b;
                         console.log('Here');
                         return characteristic.writeValue(data);
                     })
