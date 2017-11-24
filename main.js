@@ -14,7 +14,7 @@ function switchON(){
                 return Promise.all([
                     server.getPrimaryService('00001800-0000-1000-8000-00805f9b34fb') //Replace the service value
                 .then(
-				console.log('Inside Service');
+				
 				service => {   
                     return service.getCharacteristic('00002a03-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
