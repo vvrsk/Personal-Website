@@ -10,7 +10,7 @@
 
         <link rel="stylesheet" type="text/css" href="./main.css"  />
 
-        <script src="main.js"></script>
+         <script type="text/javascript" language="JavaScript" src="iQPlug.js"></script>
     </head>
 
     <body>
@@ -23,7 +23,7 @@
                 <div class="col-md-4">
                     <div class="box">
 
-                        <h1 class=text> Vensi - IQ Plug </h1>
+                        <h2 class=txt-center> Vensi - IQ Plug </h2>
                         <div class="col-md-12 no-padding">
                             <div class="input-group add-on">
                                 <input class="form-control" type="text" placeholder="Enter your bluetooth device name" name="searchTerm" id="searchTerm" >
@@ -36,13 +36,19 @@
                         <div class="row">
                             <div class="col-md-12 no-padding">
 
+							<div class="col-md-4">
+                                    <button type="button" class="btn switch-btn" id="connButton" onclick="connect()"><strong>Connect</strong></button></div>
                                 <div class="col-md-4">
-                                    <button type="button" class="btn switch-btn" onclick="switchON()"><strong>ON</strong></button></div>
+
+                                </div>
+							
+                                <div class="col-md-4">
+                                    <button type="button" class="btn switch-btn" id="onButton" onclick="on()"><strong>ON</strong></button></div>
                                 <div class="col-md-4">
 
                                 </div>
                                 <div class="col-md-4">
-                                    <button type="button" class="btn switch-btn" onclick="switchOFF()"><strong>OFF</strong></button>
+                                    <button type="button" class="btn switch-btn" id="offButton" onclick="off()" ><strong>OFF</strong></button>
                                 </div>
                             </div>
 
