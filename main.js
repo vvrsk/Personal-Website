@@ -13,13 +13,15 @@ function switchON(){
                 this.server = server;
                 return Promise.all([
                     server.getPrimaryService('00001800-0000-1000-8000-00805f9b34fb') //Replace the service value
-                .then(service => {   
+                .then(
+				console.log('Inside Service');
+				service => {   
                     return service.getCharacteristic('00002a03-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(function(characteristic) {
-						console.log('Here');
+						
                         var data = 0x002b;
-                        console.log('Here');
+                        console.log('Its here in charecteristic');
                         return characteristic.writeValue(data);
                     })
                 ]);
