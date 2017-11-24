@@ -16,7 +16,7 @@ function switchON(){
                 .then(
 				
 				service => {   
-                    return service.getCharacteristic('0000fff1-0000-1000-8000-00805f9b34fb'); // replace charecteristic
+                    return service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(function(characteristic) {
 						
