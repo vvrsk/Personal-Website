@@ -1,6 +1,6 @@
 function switchON(){
     alert("Inside Connect");
-            return navigator.bluetooth.requestDevice({filters:[{services:['IQ_Plug']}]})
+            return navigator.bluetooth.requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => {
                 console.log(device.name);
                 console.log('Here-esrvice');
@@ -10,13 +10,13 @@ function switchON(){
                 .then(server => {
                 this.server = server;
                 return Promise.all([
-                    server.getPrimaryService('IQ_Plug')
+                    server.getPrimaryService('SATECHIPLUG')
                     .then(service => {   
                         /* return Promise.all([
              this._cacheCharacteristic(service, 'gattWriteCharacteristicValue'), //replace - Charecteristic ID of the plug control
             ]) */
                         console.log('Here');
-                        var data = PLUG_ATTRIBUTE_HANDLE;
+                        var data = 0x2B;
                         console.log('Here');
                         return characteristic.writeValue(data);
                     })
