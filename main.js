@@ -19,10 +19,8 @@ function switchON(){
                     return service.getCharacteristic('00002a05-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(function(characteristic) {
-						
-                        var data = 0x002b;
                         console.log('Its here in charecteristic');
-                        return characteristic.writeValue(data);
+                        return characteristic.writeValue(0x002b);
                     })
                 ]);
             })
