@@ -1,0 +1,36 @@
+> Service: 00001800-0000-1000-8000-00805f9b34fb [Generic Access]
+
+>> Characteristic: 00002a00-0000-1000-8000-00805f9b34fb [READ]			- [Device Name]
+>> Characteristic: 00002a01-0000-1000-8000-00805f9b34fb [READ]			- [Appearance]
+>> Characteristic: 00002a02-0000-1000-8000-00805f9b34fb [READ, WRITE]	- [Peripheral Privacy Flag]-> Access Denied
+>> Characteristic: 00002a03-0000-1000-8000-00805f9b34fb [WRITE]      	- Reconnection Address
+>> Characteristic: 00002a04-0000-1000-8000-00805f9b34fb [READ]			- [Peripheral preferred Connection Parameters]
+
+
+
+
+> Service: 00001801-0000-1000-8000-00805f9b34fb   [Generic Attributes]
+>> Characteristic: 00002a05-0000-1000-8000-00805f9b34fb [INDICATE] 		- [Service Changed]
+
+
+
+> Service: 0000180a-0000-1000-8000-00805f9b34fb    [Device Information]
+>> Characteristic: 00002a23-0000-1000-8000-00805f9b34fb [READ]		- [System ID]
+>> Characteristic: 00002a24-0000-1000-8000-00805f9b34fb [READ]		- [Model Number String]
+>> Characteristic: 00002a25-0000-1000-8000-00805f9b34fb [READ]		- [Serial Number String]
+>> Characteristic: 00002a26-0000-1000-8000-00805f9b34fb [READ]		- [Firmware REvision String]
+>> Characteristic: 00002a27-0000-1000-8000-00805f9b34fb [READ]		- [Hardware Revision String]
+>> Characteristic: 00002a28-0000-1000-8000-00805f9b34fb [READ]		- [Software Revision String]
+>> Characteristic: 00002a29-0000-1000-8000-00805f9b34fb [READ]		- [Manufacturer Name String]
+>> Characteristic: 00002a2a-0000-1000-8000-00805f9b34fb [READ]		- [IEEE 11073-20601 Regulatory certification data list]
+>> Characteristic: 00002a50-0000-1000-8000-00805f9b34fb [READ]		- [PnP ID]
+
+
+
+> Service: 0000fff0-0000-1000-8000-00805f9b34fb   [UnKnown Service] 
+>> Characteristic: 0000fff1-0000-1000-8000-00805f9b34fb [READ, WRITEWITHOUTRESPONSE] 	
+>> Characteristic: 0000fff2-0000-1000-8000-00805f9b34fb [READ]
+>> Characteristic: 0000fff3-0000-1000-8000-00805f9b34fb [WRITEWITHOUTRESPONSE]
+>> Characteristic: 0000fff4-0000-1000-8000-00805f9b34fb [NOTIFY]
+>> Characteristic: 0000fff5-0000-1000-8000-00805f9b34fb [READ]
+>> Characteristic: 0000fff6-0000-1000-8000-00805f9b34fb [READ]
