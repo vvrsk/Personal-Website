@@ -2,8 +2,8 @@ function switchON(){
     alert("Inside Connect");
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
-    var value = new ArrayBuffer(16);
-    value = 0x002b;
+    var value = new ArrayBuffer(1);
+    value[0] = 0x002b;
     //BluetoothGattCharacteristic charac = null;
 	//charac.setValue(value);
 				
@@ -25,7 +25,7 @@ function switchON(){
 						 })
 				.then(function(characteristic) {
                         console.log('In charecteristic');
-                        return characteristic.writeValue(value);  //The ON-OFF Command
+                        return characteristic.writeValue(value[0]);  //The ON-OFF Command
                     })
                 ]);
             })
