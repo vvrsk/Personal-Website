@@ -1,11 +1,11 @@
 function switchON(){
     alert("Inside Connect");
-	let options = {};
+	let options = {filters: [{ services: ['0000fff0-0000-1000-8000-00805f9b34fb']}]};
 	options.acceptAllDevices = true;
             return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => {
                 console.log(device.name);
-                console.log('Here-esrvice');
+                console.log('In-service');
                 this.device = device;
                 return device.gatt.connect();
             })
@@ -19,8 +19,8 @@ function switchON(){
                     return service.getCharacteristic('0000fff1-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(function(characteristic) {
-                        console.log('Its here in charecteristic');
-                        return characteristic.writeValue(0x002b);
+                        console.log('In charecteristic');
+                        return characteristic.writeValue(0x002b);  //The ON-OFF Command
                     })
                 ]);
             })
