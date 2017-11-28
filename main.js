@@ -4,8 +4,8 @@ function switchON(){
 	options.acceptAllDevices = true;
     var value = new ArrayBuffer(16);
     value = 0x002b;
-    BluetoothGattCharacteristic charac = null;
-	charac.setValue(value);
+    //BluetoothGattCharacteristic charac = null;
+	//charac.setValue(value);
 				
 			return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => {
@@ -25,7 +25,7 @@ function switchON(){
 						 })
 				.then(function(characteristic) {
                         console.log('In charecteristic');
-                        return characteristic.writeValue(charac);  //The ON-OFF Command
+                        return characteristic.writeValue(value);  //The ON-OFF Command
                     })
                 ]);
             })
