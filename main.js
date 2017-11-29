@@ -24,6 +24,8 @@ function switchON(){
 						 })
 				.then(function(characteristic) {
                  console.log('In charecteristic');
+				 console.log(charecteristic);
+				 console.log(value);
                  return characteristic.writeValue(value);  //The ON-OFF Command
 						})
                 ]);
