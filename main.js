@@ -40,7 +40,7 @@ function switchON(){
 				 console.log(characteristic);
 				 console.log(value);
                  return characteristic.writeValue(value);  //The ON-OFF Command
-						});
+						})
                 .catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
