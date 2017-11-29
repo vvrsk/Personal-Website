@@ -2,12 +2,12 @@ function switchON(){
     alert("Inside Connect");
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
-    var value = new Uint16Array([0X002b]);
+    var value = new Uint8Array([0x52]);
 	console.log(value);
     //value[0] = 0x002b;
     //BluetoothGattCharacteristic charac = null;
 	//charac.setValue(value);
-				/*
+				
 			return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => {
                 console.log(device.name);
@@ -27,12 +27,12 @@ function switchON(){
                  return characteristic.writeValue(value);  //The ON-OFF Command
 						})
                 ]);
-            }) */
+            }) 
 			
-			return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
+			/*return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
                 .then(device => device.gatt.connect())
                 .then(server => server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb')) //Replace the service value
-                .then( service => {
+                .then(service => {
 						service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(function(characteristic){
@@ -40,7 +40,7 @@ function switchON(){
 				 console.log(characteristic);
 				 console.log(value);
                  return characteristic.writeValue(value);  //The ON-OFF Command
-						})
+						}) */
                 .catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
