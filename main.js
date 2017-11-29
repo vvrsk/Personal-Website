@@ -2,7 +2,7 @@ function switchON(){
     alert("Inside Connect");
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
-    var value = new Uint8Array([0f050400000005ffff]);
+    var value = new Uint16Array([0f050400000005ffff]);
     //value[0] = 0x002b;
     //BluetoothGattCharacteristic charac = null;
 	//charac.setValue(value);
