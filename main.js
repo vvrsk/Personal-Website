@@ -52,6 +52,7 @@ function switchOFF(){
 						})
                 .then(server => {
                 this.server = server;
+				console.log('In-server');
                 return Promise.all([
                     server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
                 .then( service => {   
