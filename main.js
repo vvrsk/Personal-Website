@@ -56,10 +56,11 @@ function switchOFF(){
                 return Promise.all([
                     server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
                 .then( service => {   
-                console.load("Inside Characteristic");
+                console.log("Inside Service");
 				return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // replace charecteristic
 						 })
 				.then(characteristic => {
+					console.log("Inside Characteristic");
 				  // Reading Battery Level...
 				return characteristic.readValue();
 				})
