@@ -100,21 +100,14 @@ function switchREAD(){
                     server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
                 .then( service => {   
                 console.log("Inside Service");
-				return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // replace charecteristic
-						 })
 				.then(characteristic => {
-					console.log("Inside Characteristic");
-					var value2 = characteristic.readValue();
-				  // Reading Battery Level...
-					console.log(value2);
-				return value2;
-				})
-				.then(value => {
-				  console.log('The value is ' + value.getUint8(0));
-				})
-				
-				]);
-            })
+					myCharacteristic = characteristic;
+					return myCharacteristic.startNotifications().then(_ => {
+					  log('> Notifications started');
+					  myCharacteristic.addEventListener('characteristicvaluechanged',
+						  handleNotifications);
+					});
+				  })
                 .catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
