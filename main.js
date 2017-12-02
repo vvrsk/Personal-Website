@@ -61,8 +61,10 @@ function switchOFF(){
 						 })
 				.then(characteristic => {
 					console.log("Inside Characteristic");
+					var value2 = characteristic.readValue();
 				  // Reading Battery Level...
-				return characteristic.readValue();
+					console.log(value2);
+				return value2;
 				})
 				.then(value => {
 				  console.log('The value is ' + value.getUint8(0));
