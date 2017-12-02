@@ -93,14 +93,15 @@ function switchREAD(){
                 this.device = device;
                 return device.gatt.connect();
 						})
-                .then(server => {
-                this.server = server;
-				console.log('In-server');
-                return Promise.all([
-                    server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
-                .then( service => {   
-                console.log("Inside Service");
-				.then(characteristic => {
+						 .then(server => {
+					log('Getting Service...');
+					return server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb');
+					})
+					.then(service => {
+					log('Getting Characteristic...');
+					return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
+				  })
+				  .then(characteristic => {
 					myCharacteristic = characteristic;
 					return myCharacteristic.startNotifications().then(_ => {
 					  log('> Notifications started');
@@ -108,15 +109,8 @@ function switchREAD(){
 						  handleNotifications);
 					});
 				  })
-                .catch(function(error) {
+				  .catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
             })
-
-	 
-	 
-	 
-	 
-	 
-	 
 }
