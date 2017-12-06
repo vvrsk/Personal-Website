@@ -156,7 +156,7 @@ function switchREAD2(){
 					return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
 				  })
 				.then(
-						charesteristic => characteristic.readValue())
+						characteristic => characteristic.readValue())
 				 .then(value => {
 					console.log('> Firmware Revision String: ' + decoder.decode(value));
 				  })
