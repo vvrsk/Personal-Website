@@ -132,6 +132,62 @@ function switchREAD(){
 }
 
 
+/*FN  Switch read 2*/
+
+function switchREAD2(){
+    alert("Inside Read");
+	var myCharacteristic;
+	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+    			
+			return navigator.bluetooth.requestDevice(options)//requestDevice({filters:[{services:['SATECHIPLUG']}]})
+                .then(device => {
+                console.log(device.name);
+                console.log('In-service');
+                this.device = device;
+                return device.gatt.connect();
+						})
+				.then(server => {
+					console.log('Getting Service...');
+					return server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb');
+					})
+				.then(service => {
+					console.log('Getting Characteristic...');
+					return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
+				  })
+				.then(characteristic => {
+					//myCharacteristic = characteristic;
+					//replace myCharecteristic with just charesteristic
+					return characteristic.startNotifications()
+					.then(characteristic => {  
+					  console.log('> Notifications started');
+					  characteristic.addEventListener('characteristicvaluechanged', event => {
+  
+  console.log('Inside Notifications');	
+  let value = event.target.value;
+  console.log(event.target.value);
+  let a = [];
+  // Convert raw data bytes to hex values just for the sake of showing something.
+  // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+  // TextDecoder to process raw data bytes.
+  for (let i = 0; i < value.byteLength; i++) {
+    a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+  }
+  console.log('> ' + a.join(' '));
+   
+  
+});
+					  console.log('>Notifications should have printed');
+					});
+				  })
+				 .catch(function(error) {
+                // And of course: error handling!
+                console.error('Connection failed!', error);
+            })
+}
+
+
+/* Fn Switch 2 - End*/
 function switchSRVCHAR() {
  
   // Validate services UUID entered by user first.
