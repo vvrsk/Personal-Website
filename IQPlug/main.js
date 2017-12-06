@@ -177,7 +177,7 @@ function switchREAD2(){
    
 });
 					  console.log('>Notifications should have printed');
-					});
+					})
 				.catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
