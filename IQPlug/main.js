@@ -180,5 +180,7 @@ function handleNotifications(event) {
   for (let i = 0; i < value.byteLength; i++) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
-  log('> ' + a.join(' '));
+  console.log('> ' + a.join(' '));
+   
+  
 }
