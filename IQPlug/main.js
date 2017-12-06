@@ -172,7 +172,9 @@ function getSupportedProperties(characteristic) {
 
 
 function handleNotifications(event) {
+  console.log('Inside Notifications');	
   let value = event.target.value;
+  console.log(event.target.value);
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
   // In the "real" world, you'd use data.getUint8, data.getUint16 or even
