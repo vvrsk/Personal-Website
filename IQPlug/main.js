@@ -102,11 +102,13 @@ function switchREAD(){
 					return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
 				  })
 				.then(characteristic => {
-					myCharacteristic = characteristic;
-					return myCharacteristic.startNotifications().then(_ => {
+					//myCharacteristic = characteristic;
+					//replace myCharecteristic with just charesteristic
+					return characteristic.startNotifications().then(_ => {  
 					  console.log('> Notifications started');
-					  myCharacteristic.addEventListener('characteristicvaluechanged',
+					  characteristic.addEventListener('characteristicvaluechanged',
 						  handleNotifications);
+					  console.log('>Notifications should have printed');
 					});
 				  })
 				 .catch(function(error) {
