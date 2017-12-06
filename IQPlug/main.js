@@ -155,7 +155,12 @@ function switchREAD2(){
 					console.log('Getting Characteristic...');
 					return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
 				  })
-				.then(characteristic => characteristic.startNotifications())
+				.then(
+						charesteristic => characteristic.readValue())
+				 .then(value => {
+					console.log('> Firmware Revision String: ' + decoder.decode(value));
+				  })
+				/* characteristic => characteristic.startNotifications())
 					//myCharacteristic = characteristic;
 					//replace myCharecteristic with just charesteristic
 					//return characteristic.startNotifications()
@@ -177,7 +182,7 @@ function switchREAD2(){
    
 });
 					  console.log('>Notifications should have printed');
-					})
+					}) */
 				.catch(function(error) {
                 // And of course: error handling!
                 console.error('Connection failed!', error);
