@@ -118,6 +118,12 @@ function switchREAD(){
 
 function switchSRVCHAR() {
  
+  // Validate services UUID entered by user first.
+  let optionalServices = document.querySelector('').value
+    .split(/, ?/).map(s => s.startsWith('0x') ? parseInt(s) : s)
+    .filter(s => s && BluetoothUUID.getService);
+ 
+ 
   log('Requesting any Bluetooth Device...');
   navigator.bluetooth.requestDevice({
    // filters: [...] <- Prefer filters to save energy & show relevant devices.
