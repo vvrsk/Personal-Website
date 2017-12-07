@@ -351,7 +351,7 @@ function switchREAD4(){
 
 //Async Notifications REad
 
-function switchREAD5(){
+async function switchREAD5(){
 
 var myCharacteristic;
 let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
