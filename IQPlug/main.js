@@ -153,24 +153,24 @@ function switchREAD(){
 function switchSRVCHAR() {
  
  
-  console.log('Requesting any Bluetooth Device...');
+  console.log("Requesting any Bluetooth Device...");
   navigator.bluetooth.requestDevice({
   acceptAllDevices: true
 	 })
   .then(device => {
-    console.log('Connecting to GATT Server...');
+    console.log("Connecting to GATT Server...");
     return device.gatt.connect();
   })
   .then(server => {
-    console.log('Getting Services...');
+    console.log("Getting Services...");
     return server.getPrimaryServices();
   })
   .then(services => {
-    console.log('Getting Characteristics...');
+    console.log("Getting Characteristics...");
     let queue = Promise.resolve();
     services.forEach(service => {
       queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-       console.log('> Service: ' + service.uuid);
+       console.log("> Service: " + service.uuid);
 		characteristics.forEach(characteristic => {
           console.log('>> Characteristic: ' + characteristic.uuid + ' ' +
               getSupportedProperties(characteristic));
