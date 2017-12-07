@@ -259,7 +259,7 @@ function switchREAD3(){
 					})
 				.then(service => {
 					console.log('Getting Characteristic...');
-					return service.getCharacteristic('0000fff2-0000-1000-8000-00805f9b34fb');
+					return service.getCharacteristic('0000fff1-0000-1000-8000-00805f9b34fb');
 				  })
 				.then( characteristic => { 
 					console.log('> Inside Characteristic: ');
