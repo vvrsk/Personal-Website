@@ -266,11 +266,13 @@ function switchREAD3(){
 				return characteristic.readValue();
 				})
 				 .then(value => {
+					 let a=[];
 					console.log('Inside Value');
 					console.log(value);
 					for (let i = 0; i < value.byteLength; i++) {
 							a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
 						  }
+					console.log('> ' + a.join(' '));
 				  })
 				.catch(function(error) {
                 // And of course: error handling!
