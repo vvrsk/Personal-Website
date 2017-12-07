@@ -152,6 +152,9 @@ function switchREAD(){
 
 function switchSRVCHAR() {
  
+ 
+ var newElement = document.createElement("div");
+ 
   console.log('Requesting any Bluetooth Device...');
   navigator.bluetooth.requestDevice({
   acceptAllDevices: true
@@ -169,8 +172,8 @@ function switchSRVCHAR() {
     let queue = Promise.resolve();
     services.forEach(service => {
       queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-        console.log('> Service: ' + service.uuid);
-        characteristics.forEach(characteristic => {
+       console.log('> Service: ' + service.uuid);
+		characteristics.forEach(characteristic => {
           console.log('>> Characteristic: ' + characteristic.uuid + ' ' +
               getSupportedProperties(characteristic));
         });
@@ -210,6 +213,8 @@ function handleNotifications(event) {
   console.log('> ' + a.join(' '));
    
 }
+
+
 
 function findDevice(reading) {
 	
@@ -410,7 +415,22 @@ function handleNotifications2(event) {
 }
 
 
+// Console 
 
+(function () {
+    if (!console) {
+        console = {};
+    }
+    var old = console.log;
+    var logger = document.getElementById('log');
+    console.log = function (message) {
+        if (typeof message == 'object') {
+            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
+        } else {
+            logger.innerHTML += message + '<br />';
+        }
+    }
+})();
 
 
 
