@@ -178,6 +178,12 @@ function handleNotifications(event) {
 }
 
 
+function findDevice(reading) {
+	
+	
+	
+	
+}
 
 /*Test Functions*/
 
@@ -204,23 +210,15 @@ function switchREAD2(){
 			console.log('Getting Characteristic...');
 			return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
 		  })
-		.then(
-			characteristic => characteristic.startNotifications())
 		.then(characteristic => {
-			  console.log('> Notifications started');
-			  characteristic.addEventListener('characteristicvaluechanged', event => {
-			  console.log('Inside Notifications');	
-			  let value = event.target.value;
-			  console.log('Printing value......');
-			  console.log(event.target.value);
-			  let a = [];
-			  for (let i = 0; i < value.byteLength; i++) {
-						a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
-				}
-			console.log('> ' + a.join(' '));
-			console.log('>Notifications should have printed');
+			myCharacteristic = characteristic;
+			return myCharacteristic.startNotifications().then(_ => {
+			  log('> Notifications started');
+			  myCharacteristic.addEventListener('characteristicvaluechanged',
+				  handleNotifications);
 		});
-		})
+		
+	})
 		.catch(function(error) {
 		// And of course: error handling!
 		console.error('Connection failed!', error);
