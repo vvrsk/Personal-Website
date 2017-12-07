@@ -267,6 +267,7 @@ function switchREAD3(){
 				})
 				 .then(value => {
 					console.log('Inside Value');
+					console.log(value);
 					console.log('> Inside Value: ' + value.getUint8(0).toString(16));
 				  })
 				.catch(function(error) {
