@@ -100,6 +100,7 @@ function switchREAD(){
 		console.error('Connection failed!', error);
 	})
 }
+	/*
 	alert("Inside Read");
 	var myCharacteristic;
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
@@ -147,7 +148,7 @@ function switchREAD(){
 		console.error('Connection failed!', error);
 	})
 }
-
+*/
 
 function switchSRVCHAR() {
  
@@ -221,6 +222,8 @@ function findDevice(reading) {
 
 /*FN  Switch read 2*/
 
+// Notifications Read
+
 function switchREAD2(){
     alert("Inside Read2");
 	var myCharacteristic;
@@ -255,6 +258,9 @@ function switchREAD2(){
 		console.error('Connection failed!', error);
 	})
 }
+
+
+// Charecteristic vlaue changed value
 
 function switchREAD3(){
     alert("Inside Read3");
@@ -297,6 +303,7 @@ function switchREAD3(){
 }
 
 
+//Charecteristic Values Changed 
 function switchREAD4(){
  alert("Inside Read4");
 	var myCharacteristic;
@@ -342,6 +349,7 @@ function switchREAD4(){
 
 /* Function Switch Read 5*/
 
+//Async Notifications REad
 
 function switchREAD5(){
 
