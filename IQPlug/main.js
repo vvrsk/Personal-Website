@@ -67,6 +67,39 @@ function switchON(){
 
 
 function switchREAD(){
+    alert("Inside Read");
+	var myCharacteristic;
+	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;	
+	return navigator.bluetooth.requestDevice(options)
+		.then(device => {
+			console.log(device.name);
+			console.log('In-service');
+			this.device = device;
+			return device.gatt.connect();
+				})
+		.then(server => {
+			console.log('Getting Service...');
+			return server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb');
+			})
+		.then(service => {
+			console.log('Getting Characteristic...');
+			return service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb');
+		  })
+		.then(characteristic => {
+			myCharacteristic = characteristic;
+			return myCharacteristic.startNotifications()
+			.then(_ => {
+			  console.log('> Notifications started');
+			  myCharacteristic.addEventListener('characteristicvaluechanged',
+				  handleNotifications);
+				});
+			})
+		.catch(function(error) {
+		// And of course: error handling!
+		console.error('Connection failed!', error);
+	})
+}
 	alert("Inside Read");
 	var myCharacteristic;
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
@@ -177,7 +210,6 @@ function handleNotifications(event) {
    
 }
 
-
 function findDevice(reading) {
 	
 	
@@ -186,7 +218,6 @@ function findDevice(reading) {
 }
 
 /*Test Functions*/
-
 
 /*FN  Switch read 2*/
 
@@ -212,7 +243,8 @@ function switchREAD2(){
 		  })
 		.then(characteristic => {
 			myCharacteristic = characteristic;
-			return myCharacteristic.startNotifications().then(_ => {
+			return myCharacteristic.startNotifications()
+			.then(_ => {
 			  console.log('> Notifications started');
 			  myCharacteristic.addEventListener('characteristicvaluechanged',
 				  handleNotifications);
@@ -264,4 +296,113 @@ function switchREAD3(){
             })
 }
 
+
+function switchREAD4(){
+ alert("Inside Read4");
+	var myCharacteristic;
+	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+    			
+			return navigator.bluetooth.requestDevice(options)
+                .then(device => {
+                console.log(device.name);
+                console.log('In-service');
+                this.device = device;
+                return device.gatt.connect();
+						})
+				.then(server => {
+					console.log('Getting Service...');
+					return server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb');
+					})
+				.then(service => {
+					console.log('Getting Characteristic...');
+					return service.getCharacteristic('0000fff6-0000-1000-8000-00805f9b34fb');
+				  })
+				.then( characteristic => { 
+					console.log('> Inside Characteristic: ');
+				return characteristic.readValue();
+				})
+				 .then(value => {
+					 let a=[];
+					console.log('Inside Value');
+					console.log(value);
+					for (let i = 0; i < value.byteLength; i++) {
+							a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+						  }
+					console.log('> ' + a.join(' '));
+				  })
+				.catch(function(error) {
+                // And of course: error handling!
+                console.error('Connection failed!', error);
+            })
+}
+
+
 /* Fn Switch 2 - End*/
+
+/* Function Switch Read 5*/
+
+
+function switchREAD5(){
+
+var myCharacteristic;
+let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+
+try {
+    console.log('Requesting Bluetooth Device...');
+    const device = await navigator.bluetooth.requestDevice();
+
+    console.log('Connecting to GATT Server...');
+    const server = await device.gatt.connect();
+
+    console.log('Getting Service...');
+    const service = await server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb'); // REplace the Service ID
+
+    console.log('Getting Characteristic...');
+    myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
+
+    await myCharacteristic.startNotifications();
+
+    console.log('> Notifications started');
+    myCharacteristic.addEventListener('characteristicvaluechanged',
+        handleNotifications2);
+  } catch(error) {
+    console.log('Argh! ' + error);
+  }	
+	
+}
+
+
+
+
+async function onStopButtonClick() {
+  if (myCharacteristic) {
+    try {
+      await myCharacteristic.stopNotifications();
+      console.log('> Notifications stopped');
+      myCharacteristic.removeEventListener('characteristicvaluechanged',
+          handleNotifications);
+    } catch(error) {
+      console.log('Argh! ' + error);
+    }
+  }
+}
+
+function handleNotifications2(event) {
+  let value = event.target.value;
+  let a = [];
+  // Convert raw data bytes to hex values just for the sake of showing something.
+  // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+  // TextDecoder to process raw data bytes.
+  for (let i = 0; i < value.byteLength; i++) {
+    a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+  }
+  console.log('> ' + a.join(' '));
+}
+
+
+
+
+
+
