@@ -268,7 +268,9 @@ function switchREAD3(){
 				 .then(value => {
 					console.log('Inside Value');
 					console.log(value);
-					console.log('> Inside Value: ' + value.getUint8(0).toString(16));
+					for (let i = 0; i < value.byteLength; i++) {
+							a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+						  }
 				  })
 				.catch(function(error) {
                 // And of course: error handling!
