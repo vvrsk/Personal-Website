@@ -359,7 +359,7 @@ let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 
 try {
     console.log('Requesting Bluetooth Device...');
-    const device = await navigator.bluetooth.requestDevice();
+    const device = await navigator.bluetooth.requestDevice(options);
 
     console.log('Connecting to GATT Server...');
     const server = await device.gatt.connect();
