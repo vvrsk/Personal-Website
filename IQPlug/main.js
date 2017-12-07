@@ -151,9 +151,8 @@ function switchREAD(){
 */
 
 function switchSRVCHAR() {
- 
- 
-  console.log("Requesting any Bluetooth Device...");
+  
+   console.log("Requesting any Bluetooth Device...");
   navigator.bluetooth.requestDevice({
   acceptAllDevices: true
 	 })
@@ -172,12 +171,16 @@ function switchSRVCHAR() {
       queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
        console.log("> Service: " + service.uuid);
 		characteristics.forEach(characteristic => {
-          console.log('>> Characteristic: ' + characteristic.uuid + ' ' +
-              getSupportedProperties(characteristic));
+          //document.getElementById('log').innerHTML = 
+		  
+		  //'>> Characteristic: ' + characteristic.uuid + ' ' +
+          //     getSupportedProperties(characteristic));
         });
       }));
     });
-    return queue;
+	
+	document.getElementById('log').innerHTML = queue.value;
+    //return queue;
   })
   .catch(error => {
     console.log('Error!! ' + error);
@@ -413,22 +416,6 @@ function handleNotifications2(event) {
 }
 
 
-// Console 
-
-(function () {
-    if (!console) {
-        console = {};
-    }
-    var old = console.log;
-    var logger = document.getElementById('log');
-    console.log = function (message) {
-        if (typeof message == 'object') {
-            logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(message) : String(message)) + '<br />';
-        } else {
-            logger.innerHTML += message + '<br />';
-        }
-    }
-})();
 
 
 
