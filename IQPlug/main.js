@@ -213,12 +213,11 @@ function switchREAD2(){
 		.then(characteristic => {
 			myCharacteristic = characteristic;
 			return myCharacteristic.startNotifications().then(_ => {
-			  log('> Notifications started');
+			  console.log('> Notifications started');
 			  myCharacteristic.addEventListener('characteristicvaluechanged',
 				  handleNotifications);
-		});
-		
-	})
+				});
+			})
 		.catch(function(error) {
 		// And of course: error handling!
 		console.error('Connection failed!', error);
