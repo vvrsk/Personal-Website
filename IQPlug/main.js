@@ -153,8 +153,6 @@ function switchREAD(){
 function switchSRVCHAR() {
  
  
- var newElement = document.createElement("div");
- 
   console.log('Requesting any Bluetooth Device...');
   navigator.bluetooth.requestDevice({
   acceptAllDevices: true
