@@ -1,5 +1,14 @@
 body, html {
     max-height: 100%;
+    overflow-x: hidden;
+}
+
+.bg { 
+    background-image: url("BokehBackground.jpg");
+    height: 100%; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body {
@@ -9,52 +18,92 @@ body {
 /*user defined custom css
 */
 .box{
-    border: 1px solid #0fc18c;
+    border: 1px solid #07638C;
     max-height: 100%;
+    min-height: 65%;
     max-width: 1000px;
     border-radius: 6px;
-    background-color: #FFFFFF;
-    color: #0fc18c !important;
-    padding: 2em;
+    background-color: rgba(1,1,1,0.4);
+    color: #FFFFFF !important;
+    padding: 2em 0em;
     margin-top: 30%;
+}
+
+.box-small{
+    border: 1px solid #07638C;
+    max-height: 100%;
+    max-width: 1000px;
+
+    background-color: rgba(1,1,1,0.4);
+    color: #FFFFFF !important;
+    padding: 1.5em;
+    margin-top: 4%;
+}
+
+.service-list{
+    max-height: 46%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.box-list{
+    border: 1px solid #07638C;
+    max-height: 100%;
+    max-width: 1000px;
+    background-color: rgba(1,1,1,0.4);
+    color: #FFFFFF !important;
+    padding: 0.5em;
+    margin-top: 4%;
 }
 
 .text{
     text-align: center;
 }
 
-
-
+.txt-center{
+    text-align: center;
+}
 
 .add-on{
     margin: 5em 0em 3em 0em;
 }
 
+.h3margin{
+    margin-top: 0% !important;
+}
+
+.h2margin{
+    margin-top: 2% !important;
+}
 
 .search-icon{
     padding: 0.63em;
 }
 
-
 .switch-btn{
-    background-color: #0fc18c;
+    background-color: #00AFF2;
     color: #FFFFFF;
-
-
 }
+
 .switch-btn:hover{
     background-color: #FFFFFF;
-    color: #0fc18c;
-    border: 1px solid #0fc18c;
+    color: #00AFF2;
+    border: 1px solid #00AFF2;
 }
+
 .switch-btn:active{
-
-    background-color: #0fc18c;
+    background-color: #00AFF2;
     color: #FFFFFF;
-
 }
 
 .no-padding{
     padding: 0px !important;
+}
 
+.aligncenter{
+    text-align: center;
+}
+
+.btnmargin{
+    margin-top: 3%;
 }
