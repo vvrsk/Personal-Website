@@ -329,24 +329,31 @@ try {
 
     console.log('Getting Characteristic...');
     myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
-
+	
+	myWriteCharacteristic = await service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb');
+	
 	var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
 	var value2 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
 	var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
 	var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
-    await myCharacteristic.startNotifications()
+    
+	myWriteCharacteristic.writeValue(value1);
+	myWriteCharacteristic.writeValue(value2);
+	myWriteCharacteristic.writeValue(value3);
+	
+	await myCharacteristic.startNotifications()
 	.then( () => {
 		console.log('> Notifications started');
 		//var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
 		
 		//myCharacteristic.writeValue(value);
 		console.log('> Val1');
-		writeFN(value1);
+	/*	writeFN(value1);
 		writeFN(value2);
 		writeFN(value3);
 		writeFN(value4);
-	//	myCharacteristic.addEventListener('characteristicvaluechanged',
-		//	handleNotifications2);
+		*/myCharacteristic.addEventListener('characteristicvaluechanged',
+		handleNotifications2);
 	});
   } catch(error) {
     console.log('Error! ' + error);
@@ -373,7 +380,7 @@ function writeFN(value){
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
    // var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
-	console.log(value);	
+	//console.log(value);	
 	return navigator.bluetooth.requestDevice(options)
 		.then(device => {
 		console.log(device.name);
