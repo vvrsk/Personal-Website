@@ -393,11 +393,7 @@ try {
 	
 }
 
-
-
-
-async function onStopButtonClick() {
-  if (myCharacteristic) {
+ if (myCharacteristic) {
     try {
       await myCharacteristic.stopNotifications();
       console.log('> Notifications stopped');
@@ -422,6 +418,35 @@ function handleNotifications2(event) {
 }
 
 
+function writeFN(value){
+    alert("Inside write function");
+	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+   // var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
+	console.log(value);	
+	return navigator.bluetooth.requestDevice(options)
+		.then(device => {
+		console.log(device.name);
+		console.log('In-service');
+		this.device = device;
+		return device.gatt.connect();
+				})
+		.then(server => {
+		this.server = server;
+		return Promise.all([
+		 server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
+		.then( service => {   
+			return service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb'); // replace charecteristic
+				 })
+		.then(function(characteristic) {
+			return characteristic.writeValue(value);  //The ON-OFF Command by writing to characteristic
+				})
+		]);
+	}) .catch(function(error) {
+		// And of course, error handling!
+		console.error('Connection failed!', error);
+	})
 
+}
 
 

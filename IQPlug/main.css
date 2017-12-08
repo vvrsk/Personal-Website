@@ -25,8 +25,8 @@ body {
     border-radius: 6px;
     background-color: rgba(1,1,1,0.4);
     color: #FFFFFF !important;
-    padding: 2em 0em;
-    margin-top: 30%;
+    padding: 2em 2em;
+    margin-top: 5%;
 }
 
 .box-small{
@@ -106,4 +106,44 @@ body {
 
 .btnmargin{
     margin-top: 3%;
+}
+
+.homeIcon{
+    width: 4em;
+    height: 4em;
+    margin-top:5%;
+}
+
+#homeButtonRow{
+    visibility: hidden;
+}
+
+#childScreen{
+    display: none;
+}
+
+.satechiLink{
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none !important;
+    height: 15%;
+    font-size: xx-large;
+    padding: 0.75em;
+}
+
+.satechiLinkContainer{
+    background-color: #00AFF2;
+    margin-top: 15%;
+    border-radius: 0.5em;
+}
+
+.satechiLinkContainer:hover{
+    background-color: #FFFFFF;
+    color: #00AFF2;
+    border: 1px solid #00AFF2;
+}
+
+.satechiLinkContainer:active{
+    background-color: #00AFF2;
+    color: #FFFFFF;
 }

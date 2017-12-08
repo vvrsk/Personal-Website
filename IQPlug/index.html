@@ -15,14 +15,38 @@
     </head>
 
     <body class="bg">
+        <div id="homeButtonRow" class="row">
+            <div class="col-md-12 txt-center">
+                <input class="homeIcon" onclick="loadHomeScreen();" type="image" src="HomeIcon.png" />
+            </div>
+        </div>
 
-        <div class="row">
+        <div id="homeScreen" class="row">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <h2 class="txt-center h2margin"><strong>Vensi</strong></h2>
+                        <div class="col-md-12 txt-center satechiLinkContainer">
+                            <div id="container" class="txt-center">
+                                <a class="satechiLink" href="#" onclick="loadChildScreen();"><strong>Satechi IQ Plug</strong></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+
+        <div id="childScreen" class="row">
             <div class="col-md-12">
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-4">
                     <div class="box">
-                        <h2 class="txt-center h2margin"> Satechi IQ Plug </h2>
+                        <h2 class="txt-center h2margin"><strong>Satechi IQ Plug</strong></h2>
                         <div class="col-md-12 no-padding">
                             <div class="box-small">
                                 <h3 class="txt-center h3margin"> Make the Connection </h3>
@@ -36,8 +60,8 @@
                                             </button>
                                         </div>
                                         <div class="col-md-4">
-                                            <button type="button" class="btn switch-btn" id="offButton" onclick="switchOFF()" >                      
-											<strong>OFF</strong>
+                                            <button type="button" class="btn switch-btn" id="offButton" onclick="switchOFF()" >
+                                                <strong>OFF</strong>
                                             </button>
                                         </div>
                                         <div class="col-md-2">
@@ -46,23 +70,27 @@
                                 </div>
                             </div>
                         </div>
-						
-						
-						
                         <div class="col-md-12 no-padding">
                             <div class="box-small">
-                                <h3 class="txt-center h3margin"> Power Usage </h3>
+                                <h3 class="txt-center h3margin"> Using Power Usage Info </h3>
                                 <div class="row txt-center">
                                     <div class="col-md-12 no-padding btnmargin">
-                                        <div class="col-md-4">
+<!--
+                                        <div class="col-md-1">
                                         </div>
-                                        <div class="col-md-4">
-                                            <button type="button" class="btn switch-btn" id="connButton" onclick="switchREAD5()">        
-											<strong>Read Value</strong>
+-->
+                                        <div class="col-md-5">
+                                            <button type="button" class="btn switch-btn" id="connButton" onclick="switchREAD3()">        
+                                                <strong>Guess the Device</strong>
                                             </button>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
+                                            <input class="form-control" type="text" name="powerUsageTextBox" id="powerUsageTextBox" >
                                         </div>
+<!--
+                                        <div class="col-md-1">
+                                        </div>
+-->
                                     </div>
                                 </div>
                             </div>
@@ -79,16 +107,16 @@
                                     <strong>List Services</strong>
                                 </button>
                             </h2>
-                            <div class="service-list" id="log">
-<!--
-                               Bind the list - from javascript function as shown below
-                               The list item should be within the <p> tag
-                                <div class="box-list">
-                                    <p>1. abc</p>
-                                </div>
-                                <div class="box-list">
-                                    <p>2. abc</p>
-                                </div>
+                            <div class="service-list" id = "log">
+                                <!--
+Bind the list - from javascript function as shown below
+The list item should be within the <p> tag
+<div class="box-list">
+<p>1. abc</p>
+</div>
+<div class="box-list">
+<p>2. abc</p>
+</div>
 -->
                             </div>
 
