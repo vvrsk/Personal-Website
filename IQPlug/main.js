@@ -1,5 +1,5 @@
 function switchOFF(){
-    alert("Inside Connect");
+   // alert("Inside Connect");
 	
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
@@ -32,7 +32,7 @@ function switchOFF(){
 
 
 function switchON(){
-    alert("Inside Connect");
+   // alert("Inside Connect");
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
     var value = new Uint8Array([0x0F, 0x06, 0x03, 0x00, 0x01, 0x00, 0x00, 0x05, 0xFF, 0xFF]);
@@ -67,7 +67,7 @@ function switchON(){
 
 
 function switchREAD(){
-    alert("Inside Read");
+   // alert("Inside Read");
 	var myCharacteristic;
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;	
@@ -156,7 +156,7 @@ function getSupportedProperties(characteristic) {
 
 
 function handleNotifications(event) {
-  console.log('Inside Notifications');	
+ // console.log('Inside Notifications');	
   let value = event.target.value;
   console.log(event.target.value);
   let a = [];
@@ -268,7 +268,7 @@ function switchREAD3(){
 
 //Charecteristic Values Changed 
 function switchREAD4(){
- alert("Inside Read4");
+ //alert("Inside Read4");
 	var myCharacteristic;
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
@@ -367,7 +367,7 @@ try {
  
 function handleNotifications2(event) {
   
-  alert("Inside Notifications");
+ // alert("Inside Notifications");
   let value = event.target.value;
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
@@ -390,7 +390,7 @@ function handleNotifications2(event) {
 
 
 function writeFN(value){
-    alert("Inside write function");
+ //   alert("Inside write function");
 	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
 	options.acceptAllDevices = true;
    // var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
