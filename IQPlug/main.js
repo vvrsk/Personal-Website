@@ -382,6 +382,8 @@ try {
     await myCharacteristic.startNotifications()
 	.then( () => {
 		console.log('> Notifications started');
+		var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
+		myCharacteristic.writeValue(value);
 		myCharacteristic.addEventListener('characteristicvaluechanged',
 			handleNotifications2);
 	});
