@@ -152,7 +152,9 @@ function switchREAD(){
 
 function switchSRVCHAR() {
   
-   console.log("Requesting any Bluetooth Device...");
+  console.log("Requesting any Bluetooth Device...");
+  var output = [];
+  
   navigator.bluetooth.requestDevice({
   acceptAllDevices: true
 	 })
@@ -170,15 +172,16 @@ function switchSRVCHAR() {
     services.forEach(service => {
       queue = queue.then(_ => service.getCharacteristics()
 		 .then(characteristics => {
-		   console.log("> Service: " + service.uuid);
+		   //console.log("> Service: " + service.uuid);
+			var serviceValue = "> Service:" +' '+ service.uuid
 			characteristics.forEach(characteristic => {
 				var returnValue = characteristic.uuid + ' ' +getSupportedProperties(characteristic)
-			return returnValue;	
+			    output.push(serviceValue+' ==> '+returnValue);	
 			});
 		  }));
     });
 	
-	document.getElementById('log').innerHTML = queue.value;
+	document.getElementById('log').innerHTML = output.value;
     //return queue;
   })
   .catch(error => {
