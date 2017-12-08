@@ -171,10 +171,6 @@ function switchSRVCHAR() {
       queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
        console.log("> Service: " + service.uuid);
 		characteristics.forEach(characteristic => {
-          //document.getElementById('log').innerHTML = 
-		  
-		  //'>> Characteristic: ' + characteristic.uuid + ' ' +
-          //     getSupportedProperties(characteristic));
         });
       }));
     });
