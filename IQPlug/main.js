@@ -168,11 +168,16 @@ function switchSRVCHAR() {
     console.log("Getting Characteristics...");
     let queue = Promise.resolve();
     services.forEach(service => {
-      queue = queue.then(_ => service.getCharacteristics().then(characteristics => {
-       console.log("> Service: " + service.uuid);
-		characteristics.forEach(characteristic => {
-        });
-      }));
+      queue = queue.then(_ => service.getCharacteristics()
+		 .then(characteristics => {
+		   console.log("> Service: " + service.uuid);
+			characteristics.forEach(characteristic => {
+				
+			return	('>> Characteristic: ' + characteristic.uuid + ' ' +
+              getSupportedProperties(characteristic));
+				
+			});
+		  }));
     });
 	
 	document.getElementById('log').innerHTML = queue.value;
