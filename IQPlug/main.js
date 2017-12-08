@@ -365,6 +365,8 @@ try {
 
  
 function handleNotifications2(event) {
+  
+  alert("Inside Notifications");
   let value = event.target.value;
   let a = [];
   // Convert raw data bytes to hex values just for the sake of showing something.
@@ -373,6 +375,7 @@ function handleNotifications2(event) {
   for (let i = 0; i < value.byteLength; i++) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
+  console.log(value);
   console.log('> ' + a.join(' '));
 }
 
