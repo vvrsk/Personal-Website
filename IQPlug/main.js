@@ -179,9 +179,10 @@ function switchSRVCHAR() {
 			    output.push(serviceValue+' ==> '+returnValue);	
 			});
 		  }));
-    });
+    document.getElementById('log').innerHTML = output;
+	});
 	
-	document.getElementById('log').innerHTML = output;
+	
     //return queue;
   })
   .catch(error => {
