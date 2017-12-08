@@ -377,7 +377,7 @@ function handleNotifications2(event) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
   console.log(value);
-  console.log(value.getFloat32())
+  console.log(value.getFloat16())
   console.log('> ' + a.join(' '));
 }
 
