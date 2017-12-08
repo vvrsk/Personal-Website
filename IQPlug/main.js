@@ -385,7 +385,7 @@ try {
     myCharacteristic.addEventListener('characteristicvaluechanged',
         handleNotifications2);
   } catch(error) {
-    console.log('Argh! ' + error);
+    console.log('Error! ' + error);
   }	
 	
 }
