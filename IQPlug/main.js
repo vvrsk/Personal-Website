@@ -353,9 +353,10 @@ try {
 		writeFN(value3);
 		writeFN(value4);
 		*/
+		myWriteCharacteristic.writeValue(value1);
 		myCharacteristic.addEventListener('characteristicvaluechanged',
 		handleNotifications2);
-		myWriteCharacteristic.writeValue(value1);
+		
 	});
   } catch(error) {
     console.log('Error! ' + error);
