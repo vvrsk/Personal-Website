@@ -183,10 +183,6 @@ function loadChildScreen() {
     document.getElementById("childScreen").style.display = "block";
 }
 
-
-
-
-
 /*Test Functions*/
 
 /*FN  Switch read 2*/
@@ -228,9 +224,7 @@ function switchREAD2(){
 	})
 }
 
-
 // Charecteristic vlaue changed value
-
 function switchREAD3(){
     alert("Inside Read3");
 	var myCharacteristic;
@@ -313,11 +307,8 @@ function switchREAD4(){
             })
 }
 
-
 /* Fn Switch 2 - End*/
-
 /* Function Switch Read 5*/
-
 //Async Notifications REad
 
 async function switchREAD5(){
@@ -339,21 +330,23 @@ try {
     console.log('Getting Characteristic...');
     myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
 
+	var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
+	var value2 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
+	var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
+	var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
     await myCharacteristic.startNotifications()
 	.then( () => {
 		console.log('> Notifications started');
 		//var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
-		var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
-		var value2 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
-		var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
-		var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
+		
 		//myCharacteristic.writeValue(value);
+		console.log('> Val1');
 		writeFN(value1);
 		writeFN(value2);
 		writeFN(value3);
 		writeFN(value4);
-		myCharacteristic.addEventListener('characteristicvaluechanged',
-			handleNotifications2);
+	//	myCharacteristic.addEventListener('characteristicvaluechanged',
+		//	handleNotifications2);
 	});
   } catch(error) {
     console.log('Error! ' + error);
