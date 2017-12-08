@@ -379,11 +379,12 @@ try {
     console.log('Getting Characteristic...');
     myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
 
-    await myCharacteristic.startNotifications();
-
-    console.log('> Notifications started');
-    myCharacteristic.addEventListener('characteristicvaluechanged',
-        handleNotifications2);
+    await myCharacteristic.startNotifications()
+	.then( () => {
+		console.log('> Notifications started');
+		myCharacteristic.addEventListener('characteristicvaluechanged',
+			handleNotifications2);
+	});
   } catch(error) {
     console.log('Error! ' + error);
   }	
