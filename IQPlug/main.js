@@ -172,10 +172,8 @@ function switchSRVCHAR() {
 		 .then(characteristics => {
 		   console.log("> Service: " + service.uuid);
 			characteristics.forEach(characteristic => {
-				
-			return	('>> Characteristic: ' + characteristic.uuid + ' ' +
-              getSupportedProperties(characteristic));
-				
+				var returnValue = characteristic.uuid + ' ' +getSupportedProperties(characteristic)
+			return returnValue;	
 			});
 		  }));
     });

@@ -1,3 +1,5 @@
+Bluetooth Device ID: f4:b8:5e:b7:1f:64
+
 > Service: 00001800-0000-1000-8000-00805f9b34fb [Generic Access]
 
 >> Characteristic: 00002a00-0000-1000-8000-00805f9b34fb [READ]			- [Device Name]
