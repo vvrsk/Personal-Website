@@ -353,7 +353,7 @@ try {
 		writeFN(value3);
 		writeFN(value4);
 		*/
-		myWriteCharacteristic.writeValue(value1);
+		myWriteCharacteristic.writeValue(value2);
 		myCharacteristic.addEventListener('characteristicvaluechanged',
 		handleNotifications2);
 		
