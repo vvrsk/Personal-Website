@@ -219,13 +219,21 @@ function handleNotifications(event) {
 }
 
 
-
-function findDevice(reading) {
-	
-	
-	
-	
+function loadHomeScreen() {
+    document.getElementById("homeScreen").style.display = "block";
+    document.getElementById("homeButtonRow").style.visibility = "hidden";
+    document.getElementById("childScreen").style.display = "none";
 }
+
+function loadChildScreen() {
+    document.getElementById("homeScreen").style.display = "none";
+    document.getElementById("homeButtonRow").style.visibility = "visible";
+    document.getElementById("childScreen").style.display = "block";
+}
+
+
+
+
 
 /*Test Functions*/
 
@@ -382,7 +390,11 @@ try {
     await myCharacteristic.startNotifications()
 	.then( () => {
 		console.log('> Notifications started');
-		var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
+		//var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
+		var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
+		
+		
+		
 		myCharacteristic.writeValue(value);
 		myCharacteristic.addEventListener('characteristicvaluechanged',
 			handleNotifications2);
