@@ -337,9 +337,9 @@ try {
 	var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
 	var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
     
-	myWriteCharacteristic.writeValue(value1);
-	myWriteCharacteristic.writeValue(value2);
-	myWriteCharacteristic.writeValue(value3);
+	
+	//myWriteCharacteristic.writeValue(value2);
+	//myWriteCharacteristic.writeValue(value3);
 	
 	await myCharacteristic.startNotifications()
 	.then( () => {
@@ -352,8 +352,10 @@ try {
 		writeFN(value2);
 		writeFN(value3);
 		writeFN(value4);
-		*/myCharacteristic.addEventListener('characteristicvaluechanged',
+		*/
+		myCharacteristic.addEventListener('characteristicvaluechanged',
 		handleNotifications2);
+		myWriteCharacteristic.writeValue(value1);
 	});
   } catch(error) {
     console.log('Error! ' + error);
