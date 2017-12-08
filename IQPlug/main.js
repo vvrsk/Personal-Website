@@ -377,7 +377,14 @@ function handleNotifications2(event) {
     a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
   }
   console.log(value);
-  console.log(value.getFloat16())
+  console.log("float32: "+value.getFloat32());
+  console.log("float64: "+value.getFloat64());
+  console.log("int8: "+value.getInt8());
+  console.log("int16: "+value.getInt16());
+  console.log("Uint16: "+value.getUint16());
+  console.log("int8: "+value.getInt8());
+    console.log("Uint8: "+value.getUint8());
+  console.log(value.getInt16());
   console.log('> ' + a.join(' '));
 }
 
