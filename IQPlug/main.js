@@ -181,7 +181,7 @@ function switchSRVCHAR() {
 		  }));
     });
 	
-	document.getElementById('log').innerHTML = output.value;
+	document.getElementById('log').innerHTML = output;
     //return queue;
   })
   .catch(error => {
