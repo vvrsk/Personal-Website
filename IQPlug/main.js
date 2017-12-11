@@ -183,12 +183,126 @@ function loadChildScreen() {
     document.getElementById("childScreen").style.display = "block";
 }
 
+
+
+//TEst functions for reading the and for extending the project scope.
+
+
+async function switchREAD5(){
+
+var myCharacteristic;
+let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+
+try {
+    console.log('Requesting Bluetooth Device...');
+    const device = await navigator.bluetooth.requestDevice(options);
+
+    console.log('Connecting to GATT Server...');
+    const server = await device.gatt.connect();
+
+    console.log('Getting Service...');
+    const service = await server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb'); // REplace the Service ID
+
+    console.log('Getting Characteristic...');
+    myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
+	
+	myWriteCharacteristic = await service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb');
+	
+	var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
+	var value2 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
+	var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
+	var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
+    
+	
+	//myWriteCharacteristic.writeValue(value2);
+	//myWriteCharacteristic.writeValue(value3);
+	
+	await myCharacteristic.startNotifications()
+	.then( () => {
+		console.log('> Notifications started');
+		//var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
+		
+		//myCharacteristic.writeValue(value);
+		console.log('> Val1');
+	/*	writeFN(value1);
+		writeFN(value2);
+		writeFN(value3);
+		writeFN(value4);
+		*/
+		myWriteCharacteristic.writeValue(value1);
+		myCharacteristic.addEventListener('characteristicvaluechanged',
+		handleNotifications2);
+		
+	});
+  } catch(error) {
+    console.log('Error! ' + error);
+  }	
+	
+}
+
+ 
+function handleNotifications2(event) {
+  
+ // alert("Inside Notifications");
+  let value = event.target.value;
+  let a = [];
+  // Convert raw data bytes to hex values just for the sake of showing something.
+  // In the "real" world, you'd use data.getUint8, data.getUint16 or even
+  // TextDecoder to process raw data bytes.
+  for (let i = 0; i < value.byteLength; i++) {
+    a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
+  }
+  console.log(value);
+  console.log("float32: "+value.getFloat32());
+  console.log("float64: "+value.getFloat64());
+  console.log("int8: "+value.getInt8());
+  console.log("int16: "+value.getInt16());
+  console.log("Uint16: "+value.getUint16());
+  console.log("int8: "+value.getInt8());
+    console.log("Uint8: "+value.getUint8());
+  console.log(value.getInt16());
+  console.log('> ' + a.join(' '));
+}
+
+
+function writeFN(value){
+ //   alert("Inside write function");
+	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
+	options.acceptAllDevices = true;
+   // var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
+	//console.log(value);	
+	return navigator.bluetooth.requestDevice(options)
+		.then(device => {
+		console.log(device.name);
+		console.log('In-service');
+		this.device = device;
+		return device.gatt.connect();
+				})
+		.then(server => {
+		this.server = server;
+		return Promise.all([
+		 server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
+		.then( service => {   
+			return service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb'); // replace charecteristic
+				 })
+		.then(function(characteristic) {
+			return characteristic.writeValue(value);  //The ON-OFF Command by writing to characteristic
+				})
+		]);
+	}) .catch(function(error) {
+		// And of course, error handling!
+		console.error('Connection failed!', error);
+	})
+
+}
+
 /*Test Functions*/
 
 /*FN  Switch read 2*/
 
 // Notifications Read
-
+/*
 function switchREAD2(){
     alert("Inside Read2");
 	var myCharacteristic;
@@ -310,114 +424,4 @@ function switchREAD4(){
 /* Fn Switch 2 - End*/
 /* Function Switch Read 5*/
 //Async Notifications REad
-
-async function switchREAD5(){
-
-var myCharacteristic;
-let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
-	options.acceptAllDevices = true;
-
-try {
-    console.log('Requesting Bluetooth Device...');
-    const device = await navigator.bluetooth.requestDevice(options);
-
-    console.log('Connecting to GATT Server...');
-    const server = await device.gatt.connect();
-
-    console.log('Getting Service...');
-    const service = await server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb'); // REplace the Service ID
-
-    console.log('Getting Characteristic...');
-    myCharacteristic = await service.getCharacteristic('0000fff4-0000-1000-8000-00805f9b34fb'); // Replace Charecteristic UUID
-	
-	myWriteCharacteristic = await service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb');
-	
-	var value1 = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
-	var value2 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
-	var value3 = new Uint8Array([0x0F, 0x05, 0x0a, 0x00, 0x00, 0x00, 0x0b,0xFF, 0xFF]);
-	var value4 = new Uint8Array([0x0F, 0x05, 0x04, 0x00, 0x00, 0x00, 0x05,0xFF, 0xFF]);
-    
-	
-	//myWriteCharacteristic.writeValue(value2);
-	//myWriteCharacteristic.writeValue(value3);
-	
-	await myCharacteristic.startNotifications()
-	.then( () => {
-		console.log('> Notifications started');
-		//var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF])
-		
-		//myCharacteristic.writeValue(value);
-		console.log('> Val1');
-	/*	writeFN(value1);
-		writeFN(value2);
-		writeFN(value3);
-		writeFN(value4);
-		*/
-		myWriteCharacteristic.writeValue(value1);
-		myCharacteristic.addEventListener('characteristicvaluechanged',
-		handleNotifications2);
-		
-	});
-  } catch(error) {
-    console.log('Error! ' + error);
-  }	
-	
-}
-
- 
-function handleNotifications2(event) {
-  
- // alert("Inside Notifications");
-  let value = event.target.value;
-  let a = [];
-  // Convert raw data bytes to hex values just for the sake of showing something.
-  // In the "real" world, you'd use data.getUint8, data.getUint16 or even
-  // TextDecoder to process raw data bytes.
-  for (let i = 0; i < value.byteLength; i++) {
-    a.push('0x' + ('00' + value.getUint8(i).toString(16)).slice(-2));
-  }
-  console.log(value);
-  console.log("float32: "+value.getFloat32());
-  console.log("float64: "+value.getFloat64());
-  console.log("int8: "+value.getInt8());
-  console.log("int16: "+value.getInt16());
-  console.log("Uint16: "+value.getUint16());
-  console.log("int8: "+value.getInt8());
-    console.log("Uint8: "+value.getUint8());
-  console.log(value.getInt16());
-  console.log('> ' + a.join(' '));
-}
-
-
-function writeFN(value){
- //   alert("Inside write function");
-	let options = {optionalServices: ['0000fff0-0000-1000-8000-00805f9b34fb']};
-	options.acceptAllDevices = true;
-   // var value = new Uint8Array([0x0F, 0x0C, 0x01, 0x00, 0x13, 0x11, 0x15, 0x07, 0x0c,0x07,0xe1,0x00,0x00,0x36,0xFF, 0xFF]);
-	//console.log(value);	
-	return navigator.bluetooth.requestDevice(options)
-		.then(device => {
-		console.log(device.name);
-		console.log('In-service');
-		this.device = device;
-		return device.gatt.connect();
-				})
-		.then(server => {
-		this.server = server;
-		return Promise.all([
-		 server.getPrimaryService('0000fff0-0000-1000-8000-00805f9b34fb') //Replace the service value
-		.then( service => {   
-			return service.getCharacteristic('0000fff3-0000-1000-8000-00805f9b34fb'); // replace charecteristic
-				 })
-		.then(function(characteristic) {
-			return characteristic.writeValue(value);  //The ON-OFF Command by writing to characteristic
-				})
-		]);
-	}) .catch(function(error) {
-		// And of course, error handling!
-		console.error('Connection failed!', error);
-	})
-
-}
-
 
